@@ -6,3 +6,33 @@ html, body {
     margin: 0px;
     padding: 0px;
 }
+
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* color variable */
+:root {
+    --black: #000;
+    --white: #FFF;
+}
+
+/* fonts */
+
+/* navbar */
+.navbar {
+    padding: 18px 28px;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.navbar-content {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
