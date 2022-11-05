@@ -1,4 +1,5 @@
 import UserActivityChart from "../components/UserActivityChart/UserActivityChart";
+import UserCardInformations from "../components/UserCardInformations/UserCardInformations";
 
 function Profile() {
     const userName = 'Thomas';
@@ -40,11 +41,25 @@ function Profile() {
         }
     ];
 
+    const userCardInfos = {
+        calorieCount: 1930,
+        proteinCount: 155,
+        carbohydrateCount: 290,
+        lipidCount: 50
+    };
+
     return (
         <div className="profile">
             <h1 className="username">Bonjour <span>{userName}</span></h1>
             <p className="welcome-message">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-            <UserActivityChart data={userActivity} />
+            <div className="profile-container">
+                <div className="user-chart-container">
+                    <UserActivityChart data={userActivity} />
+                </div>
+                <div className="user-card">
+                    <UserCardInformations userCardInfos={userCardInfos}/>
+                </div>
+            </div>
         </div>
     )
 }

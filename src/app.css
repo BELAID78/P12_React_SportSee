@@ -79,6 +79,12 @@ html, body {
     padding: 68px 107px;
 }
 
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .username {
     font-size: 48px;
     margin: 0px 0px 41px 0px;
@@ -130,4 +136,33 @@ html, body {
 
 .bar-chart-lengend-label span:nth-child(2n + 1)::before {
     background-color: var(--black-light);
+}
+
+/* user-card */
+.user-card {
+    width: 258px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-card-infos {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.user-card-infos p {
+    margin: 1px 0px;
+}
+
+.user-card-infos p:nth-child(2n + 1) {
+    font-size: 20px;
+    font-weight: bold;
+    width: 84px;
+}
+
+.user-card-infos p:nth-child(2n) {
+    font-size: 14px;
+    color: var(--gray);
 }
