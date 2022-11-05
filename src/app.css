@@ -16,6 +16,7 @@ html, body {
 :root {
     --black: #000;
     --white: #FFF;
+    --red: #FF0101;
 }
 
 /* NavBar */
@@ -57,10 +58,34 @@ html, body {
     margin: 10px 0px;
 }
 
-/* copyright */
+/* Copyright */
 .copyright {
     margin: 0px;
     transform: rotate(90deg);
     width: 138px;
     font-size: 12px;
+}
+
+/* Profile */
+.profile {
+    width: calc(100vw - 117px);
+    height: calc(100vh - 103px);
+    background-color: gray;
+    position: absolute;
+    top: 103px;
+    left: 117px;
+    padding: 68px 107px;
+}
+
+.username {
+    font-size: 48px;
+    margin: 0px 0px 41px 0px;
+}
+
+.username span {
+    color: var(--red);
+}
+
+.welcome-message {
+    font-size: 18px;
 }

@@ -7,18 +7,18 @@ import SideBar from "./components/SideBar/SideBar";
 function App() {
   return (
     <>
+      {/* navbar */}
+      <NavBar />
+
+      {/* side bar */}
+      <SideBar />
+
       {/* router */}
       <BrowserRouter>
         <Routes>
           <Route path="/" end element={<Profile />}/>
         </Routes>
       </BrowserRouter>
-
-      {/* navbar */}
-      <NavBar />
-
-      {/* side bar */}
-      <SideBar />
 
       {/* outlet */}
       <Outlet />
