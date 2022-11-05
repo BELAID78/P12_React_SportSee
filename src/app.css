@@ -18,8 +18,10 @@ html, body {
     --black-light: #282D30;
     --white: #FFF;
     --red: #FF0101;
+    --red-light: #FF0000;
     --red-dark: #E60000;
     --gray: #74798C;
+    --gray-light: #FBFBFB
 }
 
 /* NavBar */
@@ -76,7 +78,7 @@ html, body {
     position: absolute;
     top: 103px;
     left: 117px;
-    padding: 68px 107px;
+    padding: 20px 107px;
 }
 
 .profile-container {
@@ -96,6 +98,11 @@ html, body {
 
 .welcome-message {
     font-size: 18px;
+}
+
+/* user chart container */
+.user-chart-container {
+    width: calc(100% - 258px);
 }
 
 /* bar */
@@ -140,16 +147,23 @@ html, body {
 
 /* user-card */
 .user-card {
-    width: 258px;
+    width: 228px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+.user-activity-chart {
+    padding: 25px;
+    background-color: var(--gray-light);
+}
+
 .user-card-infos {
+    padding: 25px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    background-color: var(--gray-light);
 }
 
 .user-card-infos p {
@@ -165,4 +179,47 @@ html, body {
 .user-card-infos p:nth-child(2n) {
     font-size: 14px;
     color: var(--gray);
+}
+
+/* user-chart-other-data */
+.user-chart-other-data {
+    display: flex;
+}
+
+/*  */
+.user-chart-average-session {
+    width: calc(100% / 3);
+}
+/* */
+.user-chart-average-session {
+    background-color: var(--red-light);
+    border-radius: 5px;
+}
+
+.user-line-tool-tip {
+    padding: 10px;
+    color: var(--black);
+    border: 1px solid var(--white);
+    background-color: var(--white);
+}
+
+.recharts-layer.recharts-cartesian-axis-tick .recharts-cartesian-axis-tick-line {
+    display: none;
+}
+
+.recharts-surface > .recharts-curve.recharts-tooltip-cursor {
+    display: none;
+}
+
+.user-chart-average-session .recharts-text.recharts-cartesian-axis-tick-value {
+    fill: #FFF;
+}
+
+.user-chart-average-session-legend {
+    margin: 0px;
+    color: var(--white);
+    padding-left: 50px;
+    opacity: 0.5;
+    width: 190px;
+    font-size: 15px;
 }

@@ -1,4 +1,4 @@
-import { BarChart, CartesianGrid, Tooltip, XAxis, YAxis, Legend, Bar } from "recharts"
+import { BarChart, CartesianGrid, Tooltip, XAxis, YAxis, Legend, Bar, ResponsiveContainer } from "recharts"
 
 /**
  * render the custom tool tip design
@@ -39,16 +39,18 @@ const renderLegend = () => {
 
 function UserActivityChart({data}) {
   return (
-    <div>
-        <BarChart width={835} height={320} data={data}>
-            <CartesianGrid strokeDasharray="1 3" />
-            <XAxis axisLine={false} />
-            <YAxis axisLine={false} orientation='right' />
-            <Tooltip content={<CustomTooltip />} />
-            <Legend content={renderLegend} verticalAlign="top" align='right' height={80} iconType='circle'/>
-            <Bar dataKey="kilogram" barSize={15}  fill="#282D30" radius={20}/>
-            <Bar dataKey="calories" barSize={15} fill="#E60000" radius={20}/>
-        </BarChart>
+    <div className="user-activity-chart">
+        <ResponsiveContainer height={320}>
+            <BarChart data={data}>
+                <CartesianGrid strokeDasharray="1 3" />
+                <XAxis axisLine={false} />
+                <YAxis axisLine={false} orientation='right' />
+                <Tooltip content={<CustomTooltip />} />
+                <Legend content={renderLegend} verticalAlign="top" align='right' height={80} iconType='circle'/>
+                <Bar radius={[10, 10, 0, 0]} dataKey="kilogram" barSize={15}  fill="#282D30" />
+                <Bar radius={[10, 10, 0, 0]} dataKey="calories" barSize={15} fill="#E60000" />
+            </BarChart>
+        </ResponsiveContainer>
     </div>
   )
 }
