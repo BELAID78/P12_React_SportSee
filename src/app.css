@@ -15,8 +15,11 @@ html, body {
 /* Color Variable */
 :root {
     --black: #000;
+    --black-light: #282D30;
     --white: #FFF;
     --red: #FF0101;
+    --red-dark: #E60000;
+    --gray: #74798C;
 }
 
 /* NavBar */
@@ -70,7 +73,6 @@ html, body {
 .profile {
     width: calc(100vw - 117px);
     height: calc(100vh - 103px);
-    background-color: gray;
     position: absolute;
     top: 103px;
     left: 117px;
@@ -88,4 +90,44 @@ html, body {
 
 .welcome-message {
     font-size: 18px;
+}
+
+/* bar */
+.bar-tool-tip-container {
+    font-size: 7px;
+    padding: 4px 10px;
+    background-color: var(--red-dark);
+    color: white;
+    border: 1px solid var(--red-dark) !important;
+}
+
+.bar-chart-lengend {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.bar-chart-lengend-label span {
+    margin: 0px 20px;
+    position: relative;
+    color: var(--gray);
+}
+
+.bar-chart-lengend-label span:nth-child(2n)::before, .bar-chart-lengend-label span:nth-child(2n + 1)::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--red-dark);
+    border-radius: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -15px;
+}
+
+.bar-chart-lengend-label span:nth-child(2n + 1)::before {
+    background-color: var(--black-light);
 }
