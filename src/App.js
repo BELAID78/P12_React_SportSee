@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Profile from "./pages/Profile";
+import './app.css';
 
 function App() {
   return (
@@ -19,4 +20,5 @@ function App() {
     </>
   );
 }
+
 export default App;
