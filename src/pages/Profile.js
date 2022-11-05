@@ -1,6 +1,7 @@
 import UserActivityChart from "../components/UserActivityChart/UserActivityChart";
 import UserAverageSession from "../components/UserAverageSession/UserAverageSession";
 import UserCardInformations from "../components/UserCardInformations/UserCardInformations";
+import UserPerformanceChart from "../components/UserPerformanceChart/UserPerformanceChart";
 
 function Profile() {
     const userName = 'Thomas';
@@ -81,7 +82,33 @@ function Profile() {
         }
     ];
 
-
+    const userPerformance = [
+        {
+            value: 50,
+            kind: 'strength'
+        },
+        {
+            value: 80,
+            kind: 'cardio'
+        },
+        
+        {
+            value: 90,
+            kind: 'intensity'
+        },
+        {
+            value: 120,
+            kind: 'energy'
+        },
+        {
+            value: 140,
+            kind: 'endurance'
+        },
+        {
+            value: 200,
+            kind: 'speed'
+        }
+    ]
 
     return (
         <div className="profile">
@@ -92,10 +119,12 @@ function Profile() {
                     <UserActivityChart data={userActivity} />
                     <div className="user-chart-other-data">
                         <UserAverageSession userAverageSession={userAverageSession} />
+                        <UserPerformanceChart userPerformance={userPerformance} />
                     </div>
                 </div>
                 <div className="user-card">
                     <UserCardInformations userCardInfos={userCardInfos}/>
+
                 </div>
             </div>
         </div>

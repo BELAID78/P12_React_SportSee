@@ -156,6 +156,7 @@ html, body {
 .user-activity-chart {
     padding: 25px;
     background-color: var(--gray-light);
+    margin-bottom: 28px;
 }
 
 .user-card-infos {
@@ -187,8 +188,10 @@ html, body {
 }
 
 /*  */
-.user-chart-average-session {
-    width: calc(100% / 3);
+.user-chart-average-session,
+.user-chart-performance {
+    width: calc(94% / 3);
+    margin: 0px 1%;
 }
 /* */
 .user-chart-average-session {
@@ -222,4 +225,15 @@ html, body {
     opacity: 0.5;
     width: 190px;
     font-size: 15px;
+}
+
+/* */
+.user-chart-performance {
+    padding: 10px;
+    background-color: var(--black-light);
+    border-radius: 5px;
+}
+
+.recharts-layer.recharts-polar-angle-axis-tick tspan {
+    fill: var(--white);
 }
