@@ -2,6 +2,7 @@ import UserActivityChart from "../components/UserActivityChart/UserActivityChart
 import UserAverageSession from "../components/UserAverageSession/UserAverageSession";
 import UserCardInformations from "../components/UserCardInformations/UserCardInformations";
 import UserPerformanceChart from "../components/UserPerformanceChart/UserPerformanceChart";
+import UserScoreChart from "../components/UserScoreChart/UserScoreChart";
 
 function Profile() {
     const userName = 'Thomas';
@@ -110,6 +111,19 @@ function Profile() {
         }
     ]
 
+    const score = [
+        {
+            name: Math.round(1742 / 1930 * 100 * 100) / 100 + '%',
+            x: 1742,
+            fill: 'red'
+        },
+        {
+            name: 'B',
+            x: 1930 - 1742,
+            fill: 'white'
+        }
+    ];
+
     return (
         <div className="profile">
             <h1 className="username">Bonjour <span>{userName}</span></h1>
@@ -120,6 +134,7 @@ function Profile() {
                     <div className="user-chart-other-data">
                         <UserAverageSession userAverageSession={userAverageSession} />
                         <UserPerformanceChart userPerformance={userPerformance} />
+                        <UserScoreChart score={score} />
                     </div>
                 </div>
                 <div className="user-card">
