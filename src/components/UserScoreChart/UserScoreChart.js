@@ -1,4 +1,4 @@
-import { PieChart, Pie, ResponsiveContainer, Legend } from "recharts"
+import { PieChart, Pie, ResponsiveContainer } from "recharts"
 
 const renderLegend = (score) => {
     return (
