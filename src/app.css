@@ -238,6 +238,7 @@ html, body {
 
 .recharts-layer.recharts-polar-angle-axis-tick tspan {
     fill: var(--white);
+    font-size: 13px;
 }
 
 /* */
