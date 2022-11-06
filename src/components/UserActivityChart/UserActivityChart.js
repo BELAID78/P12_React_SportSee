@@ -47,8 +47,8 @@ function UserActivityChart({data}) {
                 <YAxis axisLine={false} orientation='right' />
                 <Tooltip content={<CustomTooltip />} />
                 <Legend content={renderLegend} verticalAlign="top" align='right' height={80} iconType='circle'/>
-                <Bar radius={[10, 10, 0, 0]} dataKey="kilogram" barSize={15}  fill="#282D30" />
-                <Bar radius={[10, 10, 0, 0]} dataKey="calories" barSize={15} fill="#E60000" />
+                <Bar radius={[10, 10, 0, 0]} dataKey="kilogram" barSize={8}  fill="#282D30" />
+                <Bar radius={[10, 10, 0, 0]} dataKey="calories" barSize={8} fill="#E60000" />
             </BarChart>
         </ResponsiveContainer>
     </div>
