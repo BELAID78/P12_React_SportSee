@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { PieChart, Pie, ResponsiveContainer } from "recharts"
 
 const renderLegend = (score) => {
@@ -10,13 +11,24 @@ const renderLegend = (score) => {
 }
 
 function UserScoreChart({score}) {
+    const [windowHeight, setWindowHeight] = useState(window.outerHeight);
+
+    const innerRadiusValue = windowHeight >= 720 && windowHeight <= 910 ? 70 : 90;
+    const outerRadiusValue = windowHeight >= 720 && windowHeight <= 910 ? 80 : 100;
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            setWindowHeight(window.outerHeight);
+        });
+    }, []);
+
     return (
         <div className="user-chart-score">
             <p className="chart-legend">Score</p>
             {renderLegend(score)}
-            <ResponsiveContainer height={270}>
+            <ResponsiveContainer height='100%'>
                 <PieChart>
-                    <Pie data={score} cornerRadius={10} innerRadius={90} outerRadius={100} paddingAngle={0} dataKey="x" />
+                    <Pie data={score} cornerRadius={10} innerRadius={innerRadiusValue} outerRadius={outerRadiusValue} paddingAngle={0} dataKey="x" />
                 </PieChart>
             </ResponsiveContainer>
         </div>

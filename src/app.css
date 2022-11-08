@@ -78,7 +78,7 @@ html, body {
     position: absolute;
     top: 103px;
     left: 117px;
-    padding: 20px 107px;
+    padding: 20px 3%;
 }
 
 .profile-container {
@@ -269,8 +269,8 @@ html, body {
 
 .chart-legend {
     position: absolute;
-    top: 24px;
-    left: 30px;
+    top: 10px;
+    left: 10px;
     font-size: 15px;
     font-weight: bold;
 }
@@ -281,4 +281,36 @@ html, body {
     transform: translateX(-50%);
     width: 100%;
     text-align: center;
+}
+
+.user-chart-score,
+.user-chart-performance,
+.user-chart-average-session,
+.user-activity-chart {
+    height: 28.96vh;
+}
+
+/* responsive */
+@media screen  and (min-height: 720px) and (max-height: 910px) {
+    .user-activity-chart {
+        padding: 0px;
+    }
+
+    .user-chart-score-legend p:nth-child(2n + 1) {
+        font-size: 20px;
+    }
+    
+    .user-chart-score-legend p:nth-child(2n) {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:1150px) {
+    .user-chart-container {
+        width: calc(100% - 208px) !important;
+    }
+
+    .user-card {
+        width: 208px !important;
+    }
 }

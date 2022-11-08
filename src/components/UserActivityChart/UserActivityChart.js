@@ -40,7 +40,7 @@ const renderLegend = () => {
 function UserActivityChart({data}) {
   return (
     <div className="user-activity-chart">
-        <ResponsiveContainer height={270}>
+        <ResponsiveContainer height={'100%'}>
             <BarChart data={data}>
                 <CartesianGrid strokeDasharray="1 3" />
                 <XAxis axisLine={false} />

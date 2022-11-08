@@ -9,7 +9,7 @@ function Profile() {
     const userName = 'Thomas';
 
     const userId = useParams().id;
-    
+
     const userActivity = [
         {
             day: '2020-07-01',

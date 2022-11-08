@@ -3,7 +3,7 @@ import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } fro
 function UserPerformanceChart({userPerformance}) {
     return (
         <div className="user-chart-performance">
-            <ResponsiveContainer height={270}>
+            <ResponsiveContainer height={'100%'}>
                 <RadarChart data={userPerformance}>
                     <PolarGrid />
                     <PolarAngleAxis dataKey="kind" />
