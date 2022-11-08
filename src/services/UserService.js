@@ -6,7 +6,7 @@ import axios from "axios";
 export default class UserService {
 
     /**
-     * fetch the user informations 
+     * provide the userId
      * 
      * @param {number} userId 
      * @returns {void}
@@ -17,9 +17,6 @@ export default class UserService {
 
         //user informations data
         this.data = [];
-
-        //fetch the user data
-        this.request();
     }
 
     /**
@@ -27,33 +24,37 @@ export default class UserService {
      * 
      * @returns {void}
      */
-    request() {
-        axios({
+    async request() {
+        const { data } = await axios({
 			method: 'get',
 			url: this.endpoint,
 			data: {
 				id: this.userId
 			}
-		}).then(response => {
-			this.data = response.data.data;
 		});
+
+        this.data = data.data;
     }
 
     /**
      * get the user informations
      * 
-     * @returns {object}
+     * @returns {Promise}
      */
-    getUserInformations() {
-        return this.data.userInfos;
+    async getUserInformations() {
+        await this.request();
+
+        return await this.data.userInfos;
     }
 
     /**
      * get the user completetion objectif 
      * 
-     * @returns {array}
+     * @returns {Promise}
      */
-    getCompletetionObjectif() {
-        return this.data.keyData;
+    async getCompletetionObjectif() {
+        await this.request();
+
+        return await this.data.keyData;
     }
 }
