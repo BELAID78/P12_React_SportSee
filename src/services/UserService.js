@@ -55,6 +55,17 @@ export default class UserService {
     async getCompletetionObjectif() {
         await this.request();
 
+        return await this.data.todayScore;
+    }
+
+    /**
+     * get the user key data
+     * 
+     * @returns {Promise}
+     */
+    async getKeyData() {
+        await this.request();
+
         return await this.data.keyData;
     }
 }
