@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import UserActivityChart from "../components/UserActivityChart/UserActivityChart";
 import UserAverageSession from "../components/UserAverageSession/UserAverageSession";
 import UserCardInformations from "../components/UserCardInformations/UserCardInformations";
@@ -7,6 +8,8 @@ import UserScoreChart from "../components/UserScoreChart/UserScoreChart";
 function Profile() {
     const userName = 'Thomas';
 
+    const userId = useParams().id;
+    
     const userActivity = [
         {
             day: '2020-07-01',

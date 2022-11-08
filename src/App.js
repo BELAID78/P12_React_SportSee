@@ -16,7 +16,7 @@ function App() {
       {/* router */}
       <BrowserRouter>
         <Routes>
-          <Route path="/" end element={<Profile />}/>
+          <Route path="/user/:id" end element={<Profile />}/>
         </Routes>
       </BrowserRouter>
 
