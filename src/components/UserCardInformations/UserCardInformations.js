@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { UserCardContext } from '../../pages/Profile';
+import Spinner from '../Spinner/Spinner';
 import Calories from './../../assets/images/calories.svg';
 import Carbs from './../../assets/images/carbs.svg';
 import Fat from './../../assets/images/fat.svg';
@@ -7,6 +8,10 @@ import Protein from './../../assets/images/protein.svg';
 
 function UserCardInformations() {
     const {calorieCount, carbohydrateCount, lipidCount, proteinCount} = useContext(UserCardContext);
+    
+    if(!calorieCount) {
+        return <Spinner />
+    }
     
     return (
         <>

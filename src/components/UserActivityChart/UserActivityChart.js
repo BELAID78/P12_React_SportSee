@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { BarChart, CartesianGrid, Tooltip, XAxis, YAxis, Legend, Bar, ResponsiveContainer } from "recharts"
 import { UserActivityContext } from "../../pages/Profile";
+import Spinner from "../Spinner/Spinner";
 
 /**
  * render the custom tool tip design
@@ -43,6 +44,10 @@ function UserActivityChart() {
 
     const data = useContext(UserActivityContext);
 
+    if(data.length === 0) {
+        return <Spinner />
+    }
+    
     return (
         <div className="user-activity-chart">
             <ResponsiveContainer height='100%'>
