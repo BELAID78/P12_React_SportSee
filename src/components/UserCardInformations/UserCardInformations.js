@@ -1,10 +1,13 @@
+import { useContext } from 'react';
+import { UserCardContext } from '../../pages/Profile';
 import Calories from './../../assets/images/calories.svg';
 import Carbs from './../../assets/images/carbs.svg';
 import Fat from './../../assets/images/fat.svg';
 import Protein from './../../assets/images/protein.svg';
 
-function UserCardInformations({userCardInfos}) {
-    const {calorieCount, carbohydrateCount, lipidCount, proteinCount} = userCardInfos
+function UserCardInformations() {
+    const {calorieCount, carbohydrateCount, lipidCount, proteinCount} = useContext(UserCardContext);
+    
     return (
         <>
             <div className='user-card-infos'>

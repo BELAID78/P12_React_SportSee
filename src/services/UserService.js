@@ -55,6 +55,10 @@ export default class UserService {
     async getCompletetionObjectif() {
         await this.request();
 
+        if('score' in this.data) {
+            return await this.data.score;
+        }
+
         return await this.data.todayScore;
     }
 

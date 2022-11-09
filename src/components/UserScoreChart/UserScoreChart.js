@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PieChart, Pie, ResponsiveContainer } from "recharts"
+import { UserScoreContext } from "../../pages/Profile";
 
 const renderLegend = (score) => {
     return (
@@ -10,7 +11,23 @@ const renderLegend = (score) => {
     );
 }
 
-function UserScoreChart({score}) {
+function UserScoreChart() {
+    const userScore = useContext(UserScoreContext);
+
+    const score = [
+        {
+            name: (userScore * 100) + '%',
+            x: userScore * 100,
+            fill: 'red'
+        },
+        {
+            name: 'B',
+            x: 100 - (userScore * 100),
+            fill: 'white'
+        }
+    ]
+    
+    
     const [windowHeight, setWindowHeight] = useState(window.outerHeight);
 
     const innerRadiusValue = windowHeight >= 720 && windowHeight <= 910 ? 70 : 90;
