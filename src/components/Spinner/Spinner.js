@@ -1,3 +1,8 @@
+/**
+ * Component for render spinner
+ * 
+ * @returns {React.ReactElement}
+ */
 function Spinner() {
     return (
         <div className="lds-spinner">
@@ -6,4 +11,5 @@ function Spinner() {
     )
 }
 
+//export Spinner component
 export default Spinner

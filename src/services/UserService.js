@@ -6,7 +6,7 @@ import axios from "axios";
 export default class UserService {
 
     /**
-     * provide the userId
+     * init the needed data
      * 
      * @param {number} userId 
      * @returns {void}

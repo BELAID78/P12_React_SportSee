@@ -2,6 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { PieChart, Pie, ResponsiveContainer } from "recharts"
 import { UserScoreContext } from "../../pages/Profile";
 
+/**
+ * render the chart legend 
+ * 
+ * @param {array} score 
+ * @returns {React.ReactElement}
+ */
 const renderLegend = (score) => {
     return (
       <div className="user-chart-score-legend">
@@ -11,9 +17,16 @@ const renderLegend = (score) => {
     );
 }
 
+/**
+ * Component for render the user score chart
+ * 
+ * @returns {React.ReactElement}
+ */
 function UserScoreChart() {
+    //get user score chart
     const userScore = useContext(UserScoreContext);
 
+    //user score chart as array
     const score = [
         {
             name: (userScore * 100) + '%',
@@ -27,12 +40,16 @@ function UserScoreChart() {
         }
     ]
     
-    
+    //state for handle the window height
     const [windowHeight, setWindowHeight] = useState(window.outerHeight);
 
+    //chart inner radius value by window height
     const innerRadiusValue = windowHeight >= 720 && windowHeight <= 910 ? 70 : 90;
+
+    //chart outer radius value by window height
     const outerRadiusValue = windowHeight >= 720 && windowHeight <= 910 ? 80 : 100;
 
+    //add resize event listener when chart mounted
     useEffect(() => {
         window.addEventListener('resize', () => {
             setWindowHeight(window.outerHeight);
@@ -52,4 +69,5 @@ function UserScoreChart() {
     )
 }
 
+//export UserScoreChart component
 export default UserScoreChart

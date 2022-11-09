@@ -3,6 +3,12 @@ import { LineChart, Tooltip, XAxis, Line, ResponsiveContainer, Legend } from "re
 import { UserAverageSessionContext } from "../../pages/Profile";
 import Spinner from "../Spinner/Spinner";
 
+/**
+ * render the chart tool tip
+ * 
+ * @param {object} 
+ * @returns {React.ReactElement}
+ */
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
 
@@ -14,12 +20,22 @@ const CustomTooltip = ({ active, payload }) => {
     }
 }
 
+/**
+ * render the chart legend
+ * 
+ * @returns {React.ReactElement}
+ */
 const renderLegend = () => {
     return (
       <p className="user-chart-average-session-legend">Durée moyenne des sessions</p>
     );
 }
 
+/**
+ * Component for render user average session chart
+ * 
+ * @returns {React.ReactElement}
+ */
 function UserAverageSession() {
     
     const userAverageSession = useContext(UserAverageSessionContext);
@@ -42,4 +58,5 @@ function UserAverageSession() {
     )
 }
 
+//export YserAverageSession
 export default UserAverageSession

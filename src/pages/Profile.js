@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ShowNavBarContext } from "../App";
 import UserActivityChart from "../components/UserActivityChart/UserActivityChart";
 import UserAverageSession from "../components/UserAverageSession/UserAverageSession";
 import UserCardInformations from "../components/UserCardInformations/UserCardInformations";
@@ -18,29 +19,126 @@ export const UserScoreContext = React.createContext();
 export const UserAverageSessionContext = React.createContext();
 export const UserPerformanceContext = React.createContext();
 
+/**
+ * Component for render the profile page
+ * 
+ * @returns {React.ReactElement}
+ */
 function Profile() {
+    //get user id from url
     const userId = useParams().id;
 
+    //state handle user name
     const [userName, setUserName] = useState('');
+
+    //state handle user activity
     const [userActivity, setUserActivity] = useState([]);
+
+    //state handle user infos 
     const [userCardInfos, setUserCardInfos] = useState({});
+
+    //state handle user score
     const [userScore, setUserScore] = useState(0);
+
+    //state handle user average session
     const [userAverageSession, setUserAverageSession] = useState([]);
+
+    //state handle user performance
     const [userPerformance, setUserPerformance] = useState([]);
 
+    //state handle show nav bar and side nav bar
+    const showNavBar = useContext(ShowNavBarContext);
+    
+    //redirect function to use it for redirection
+    const redirect = useNavigate();
+
+    //fetch the user data when user_id change
     useEffect(() => {
-        (new UserService(userId)).getUserInformations().then(data => setUserName(`${data.firstName} ${data.lastName}`) );
 
-        (new UserActivityService(userId).getActivity().then(data => setUserActivity(data) ));
+        //fetch user informations
+        (new UserService(userId)).getUserInformations()
+        .then(data => {
+            //set the user full name
+            setUserName(`${data.firstName} ${data.lastName}`);
+        })
+        .catch(error => {
+            //hide the navbar and side bar
+            showNavBar.setShow(false);
 
-        (new UserService(userId)).getKeyData().then(data => setUserCardInfos(data) );
+            //redirect to error page
+            redirect('/error');
+        });
 
-        (new UserService(userId)).getCompletetionObjectif().then(data => setUserScore(data) );
+        //fetch user activity
+        (new UserActivityService(userId).getActivity()
+        .then(data => {
+            //set user activity
+            setUserActivity(data);
+        }))
+        .catch(error => {
+            //hide the navbar and side bar
+            showNavBar.setShow(false);
 
-        (new UserSessionService(userId)).getSessionTime().then(data => setUserAverageSession(data) );
+            //redirect to error page
+            redirect('/error');
+        });
 
-        (new UserActivityTypeService(userId)).getActivityType().then(data => setUserPerformance(data) );
-    }, [userId]);
+        //fetch user key data
+        (new UserService(userId)).getKeyData().then(data => {
+            //set user key data
+            setUserCardInfos(data);
+        })
+        .catch(error => {
+            //hide the navbar and side bar
+            showNavBar.setShow(false);
+
+            //redirect to error page
+            redirect('/error');
+        });
+
+        //fetch user completetion objectif
+        (new UserService(userId)).getCompletetionObjectif()
+        .then(data => {
+            //set user completetion objectif
+            setUserScore(data);
+        })
+        .catch(error => {
+            //hide the navbar and side bar
+            showNavBar.setShow(false);
+
+            //redirect to error page
+            redirect('/error');
+        });
+
+        //fetch user session time
+        (new UserSessionService(userId)).getSessionTime()
+        .then(data => {
+            //set user session time
+            setUserAverageSession(data);
+        })
+        .catch(error => {
+            //hide the navbar and side bar
+            showNavBar.setShow(false);
+
+            //redirect to error page
+            redirect('/error');
+        });
+
+        //fetch user activity type
+        (new UserActivityTypeService(userId)).getActivityType()
+        .then(data => {
+            //set user activity type
+            setUserPerformance(data);
+        })
+        .catch(error => {
+            //hide the navbar and side bar
+            showNavBar.setShow(false);
+
+            //redirect to error page
+            redirect('/error');
+        });
+
+    }, [userId, redirect, showNavBar]);
 
     return (
         <div className="profile">
@@ -84,4 +182,5 @@ function Profile() {
     )
 }
 
+//export Profile component
 export default Profile

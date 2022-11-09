@@ -6,9 +6,16 @@ import Carbs from './../../assets/images/carbs.svg';
 import Fat from './../../assets/images/fat.svg';
 import Protein from './../../assets/images/protein.svg';
 
+/**
+ * Component for render user card information
+ * 
+ * @returns {React.ReactElement}
+ */
 function UserCardInformations() {
+    //get the data from the context
     const {calorieCount, carbohydrateCount, lipidCount, proteinCount} = useContext(UserCardContext);
     
+    //if there is no data render the spinner component
     if(!calorieCount) {
         return <Spinner />
     }
@@ -58,4 +65,5 @@ function UserCardInformations() {
     )
 }
 
+//export UserCardInformations component
 export default UserCardInformations

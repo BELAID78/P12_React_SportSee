@@ -5,7 +5,7 @@ import axios from "axios";
  */
 export default class UserActivityService {
     /**
-     * fetch the user informations 
+     * init the needed data
      * 
      * @param {number} userId 
      * @returns {void}

@@ -1,5 +1,10 @@
 import Logo from './../../assets/images/logo.svg';
 
+/**
+ * Component for render the navbar
+ * 
+ * @returns {React.ReactElement}
+ */
 function NavBar() {
     return (
         <div className="navbar">
@@ -16,4 +21,5 @@ function NavBar() {
     )
 }
 
+//export Navbar component
 export default NavBar

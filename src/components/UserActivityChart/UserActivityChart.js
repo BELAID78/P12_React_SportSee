@@ -7,7 +7,7 @@ import Spinner from "../Spinner/Spinner";
  * render the custom tool tip design
  * 
  * @param {object} 
- * @returns {JSX}
+ * @returns {React.ReactElement}
  */
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -26,7 +26,7 @@ const CustomTooltip = ({ active, payload }) => {
 /**
  * render the legend custom design
  * 
- * @returns {JSX}
+ * @returns {React.ReactElement}
  */
 const renderLegend = () => {
     return (
@@ -40,10 +40,17 @@ const renderLegend = () => {
     );
 }
 
+/**
+ * Component for render user activity chart
+ * 
+ * @returns {React.ReactElement}
+ */
 function UserActivityChart() {
 
+    //user activity context data
     const data = useContext(UserActivityContext);
 
+    //if there is no data render the spinner
     if(data.length === 0) {
         return <Spinner />
     }
@@ -65,4 +72,5 @@ function UserActivityChart() {
     )
 }
 
+//export UserActivityChart component
 export default UserActivityChart

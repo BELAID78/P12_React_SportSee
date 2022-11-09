@@ -4,6 +4,11 @@ import Swim from './../../assets/images/swim.svg';
 import Sycl from './../../assets/images/sycl.svg';
 import Yoga from './../../assets/images/yoga.svg';
 
+/**
+ * Component for render the side bar
+ * 
+ * @returns {React.ReactElement}
+ */
 function SideBar() {
     return (
         <div className='sidebar'>
@@ -18,4 +23,5 @@ function SideBar() {
     )
 }
 
+//export SideBar component
 export default SideBar
