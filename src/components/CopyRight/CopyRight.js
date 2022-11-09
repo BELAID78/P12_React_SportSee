@@ -11,5 +11,15 @@ function CopyRight() {
     )
 }
 
+//no validated props for that component
+Error.propTypes = {
+
+}
+
+//no default props for that component
+Error.defaultProps = {
+
+}
+
 //export CopyRight component
 export default CopyRight

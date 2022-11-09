@@ -65,5 +65,15 @@ function UserCardInformations() {
     )
 }
 
+//no validated props for that component
+Error.propTypes = {
+
+}
+
+//no default props for that component
+Error.defaultProps = {
+
+}
+
 //export UserCardInformations component
 export default UserCardInformations

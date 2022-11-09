@@ -30,5 +30,15 @@ function UserPerformanceChart() {
     )
 }
 
+//no validated props for that component
+Error.propTypes = {
+
+}
+
+//no default props for that component
+Error.defaultProps = {
+
+}
+
 //export UserPerformanceChart component
 export default UserPerformanceChart

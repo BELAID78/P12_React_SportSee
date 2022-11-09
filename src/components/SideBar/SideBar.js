@@ -23,5 +23,15 @@ function SideBar() {
     )
 }
 
+//no validated props for that component
+Error.propTypes = {
+
+}
+
+//no default props for that component
+Error.defaultProps = {
+
+}
+
 //export SideBar component
 export default SideBar

@@ -21,5 +21,15 @@ function UserFullName() {
     )
 }
 
+//no validated props for that component
+Error.propTypes = {
+
+}
+
+//no default props for that component
+Error.defaultProps = {
+
+}
+
 //export UserFullName component
 export default UserFullName;

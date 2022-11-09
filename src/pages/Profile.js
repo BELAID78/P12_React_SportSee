@@ -182,5 +182,15 @@ function Profile() {
     )
 }
 
+//no validated props for that component
+Error.propTypes = {
+
+}
+
+//no default props for that component
+Error.defaultProps = {
+
+}
+
 //export Profile component
 export default Profile

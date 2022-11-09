@@ -21,5 +21,15 @@ function Error() {
     )
 }
 
+//no validated props for that component
+Error.propTypes = {
+
+}
+
+//no default props for that component
+Error.defaultProps = {
+
+}
+
 //export Error component
 export default Error
