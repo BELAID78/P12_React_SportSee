@@ -1,148 +1,83 @@
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserActivityChart from "../components/UserActivityChart/UserActivityChart";
 import UserAverageSession from "../components/UserAverageSession/UserAverageSession";
 import UserCardInformations from "../components/UserCardInformations/UserCardInformations";
+import UserFullName from "../components/UserFullName/UserFullName";
 import UserPerformanceChart from "../components/UserPerformanceChart/UserPerformanceChart";
 import UserScoreChart from "../components/UserScoreChart/UserScoreChart";
+import UserActivityService from "../services/UserActivityService";
+import UserActivityTypeService from "../services/UserActivityTypeService";
+import UserService from "../services/UserService";
+import UserSessionService from "../services/UserSessionService";
+
+export const UserInformationContext = React.createContext();
+export const UserActivityContext = React.createContext();
+export const UserCardContext = React.createContext();
+export const UserScoreContext = React.createContext();
+export const UserAverageSessionContext = React.createContext();
+export const UserPerformanceContext = React.createContext();
 
 function Profile() {
-    const userName = 'Thomas';
-
     const userId = useParams().id;
 
-    const userActivity = [
-        {
-            day: '2020-07-01',
-            kilogram: 80,
-            calories: 240
-        },
-        {
-            day: '2020-07-02',
-            kilogram: 80,
-            calories: 220
-        },
-        {
-            day: '2020-07-03',
-            kilogram: 81,
-            calories: 280
-        },
-        {
-            day: '2020-07-04',
-            kilogram: 81,
-            calories: 290
-        },
-        {
-            day: '2020-07-05',
-            kilogram: 80,
-            calories: 160
-        },
-        {
-            day: '2020-07-06',
-            kilogram: 78,
-            calories: 162
-        },
-        {
-            day: '2020-07-07',
-            kilogram: 76,
-            calories: 390
-        }
-    ];
+    const [userName, setUserName] = useState('');
+    const [userActivity, setUserActivity] = useState([]);
+    const [userCardInfos, setUserCardInfos] = useState({});
+    const [userScore, setUserScore] = useState(0);
+    const [userAverageSession, setUserAverageSession] = useState([]);
+    const [userPerformance, setUserPerformance] = useState([]);
 
-    const userCardInfos = {
-        calorieCount: 1930,
-        proteinCount: 155,
-        carbohydrateCount: 290,
-        lipidCount: 50
-    };
+    useEffect(() => {
+        (new UserService(userId)).getUserInformations().then(data => setUserName(`${data.firstName} ${data.lastName}`) );
 
-    const userAverageSession = [
-        {
-            day: 1,
-            sessionLength: 30
-        },
-        {
-            day: 2,
-            sessionLength: 23
-        },
-        {
-            day: 3,
-            sessionLength: 45
-        },
-        {
-            day: 4,
-            sessionLength: 50
-        },
-        {
-            day: 5,
-            sessionLength: 0
-        },
-        {
-            day: 6,
-            sessionLength: 0
-        },
-        {
-            day: 7,
-            sessionLength: 60
-        }
-    ];
+        (new UserActivityService(userId).getActivity().then(data => setUserActivity(data) ));
 
-    const userPerformance = [
-        {
-            value: 50,
-            kind: 'strength'
-        },
-        {
-            value: 80,
-            kind: 'cardio'
-        },
-        
-        {
-            value: 90,
-            kind: 'intensity'
-        },
-        {
-            value: 120,
-            kind: 'energy'
-        },
-        {
-            value: 140,
-            kind: 'endurance'
-        },
-        {
-            value: 200,
-            kind: 'speed'
-        }
-    ]
+        (new UserService(userId)).getKeyData().then(data => setUserCardInfos(data) );
 
-    const score = [
-        {
-            name: Math.round(1742 / 1930 * 100 * 100) / 100 + '%',
-            x: 1742,
-            fill: 'red'
-        },
-        {
-            name: 'B',
-            x: 1930 - 1742,
-            fill: 'white'
-        }
-    ];
+        (new UserService(userId)).getCompletetionObjectif().then(data => setUserScore(data) );
+
+        (new UserSessionService(userId)).getSessionTime().then(data => setUserAverageSession(data) );
+
+        (new UserActivityTypeService(userId)).getActivityType().then(data => setUserPerformance(data) );
+    }, [userId]);
 
     return (
         <div className="profile">
-            <h1 className="username">Bonjour <span>{userName}</span></h1>
+
+            <UserInformationContext.Provider value={userName}>
+                <UserFullName />
+            </UserInformationContext.Provider>
+
             <p className="welcome-message">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+
             <div className="profile-container">
                 <div className="user-chart-container">
-                    <UserActivityChart data={userActivity} />
+
+                    <UserActivityContext.Provider value={userActivity}>
+                        <UserActivityChart />
+                    </UserActivityContext.Provider>
+
                     <div className="user-chart-other-data">
-                        <UserAverageSession userAverageSession={userAverageSession} />
-                        <UserPerformanceChart userPerformance={userPerformance} />
-                        <UserScoreChart score={score} />
+                        <UserAverageSessionContext.Provider value={userAverageSession}>
+                            <UserAverageSession />
+                        </UserAverageSessionContext.Provider>
+
+                        <UserPerformanceContext.Provider value={userPerformance}>
+                            <UserPerformanceChart />
+                        </UserPerformanceContext.Provider>
+
+                        <UserScoreContext.Provider value={userScore}>
+                            <UserScoreChart />
+                        </UserScoreContext.Provider>
                     </div>
                 </div>
                 <div className="user-card">
-                    <UserCardInformations userCardInfos={userCardInfos}/>
 
+                    <UserCardContext.Provider value={userCardInfos}>
+                        <UserCardInformations />
+                    </UserCardContext.Provider>
+                    
                 </div>
             </div>
         </div>
