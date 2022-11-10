@@ -5,6 +5,7 @@ import './app.css';
 import NavBar from "./components/NavBar/NavBar";
 import SideBar from "./components/SideBar/SideBar";
 import Error from "./pages/Error";
+import Home from "./pages/Home";
 
 //export ShowNavBarContext context
 export const ShowNavBarContext = React.createContext();
@@ -30,7 +31,8 @@ function App() {
         {/* router */}
         <BrowserRouter>
           <Routes>
-            <Route path="/user/:id" end element={<Profile />} />
+            <Route path="/" end element={<Home />} />
+            <Route path="/user/:id" element={<Profile />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>
