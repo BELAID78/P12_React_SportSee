@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { ShowNavBarContext } from "../App"
+import Logo from '../assets/images/logo.svg'
 
 /**
  * Component for render the home page
@@ -16,7 +17,8 @@ function Home() {
 
     return (
         <div className="home">
-            <p className="infos">Tous les utulisateurs</p>
+            <p className="infos">👋 Bienvenue dans l'application  <img src={Logo} alt='sportSee logo' /></p>
+            <p className="infos">Sélectionner un utilisateur ⬇️ pour tester l'application </p>
             <p className="user">- <a href="/user/12">Karl Dovineau</a></p>
             <p className="user">- <a href="/user/18">Cecilia Ratorez</a></p>
         </div>

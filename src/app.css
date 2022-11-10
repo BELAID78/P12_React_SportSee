@@ -43,6 +43,11 @@ html, body {
     font-size: 24px;
 }
 
+.navbar-content a {
+    text-decoration: none;
+    color: var(--white);
+}
+
 /* SideBar */
 .sidebar {
     padding: 0px 26px;
@@ -408,4 +413,52 @@ html, body {
     100% {
         opacity: 0;
     }
+}
+
+/* Home */
+.home {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .infos {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--black-light);
+    align-items: center;
+    display: inline-flex;
+}
+
+.home a {
+    text-decoration: none;
+    color: var(--red-light);
+    font-weight: bold;
+
+}
+
+/* ERROR page */
+.error-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-page h1 {
+    color: var(--red-dark);
+    font-size: 80px;
+}
+
+.error-page p {
+    color: var(--black-light);
+    font-size: 40px;
+}
+
+.error-page a {
+    text-decoration: none;
+    color: var(--gray);
 }
