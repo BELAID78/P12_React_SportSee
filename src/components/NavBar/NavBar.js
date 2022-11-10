@@ -10,12 +10,12 @@ function NavBar() {
         <div className="navbar">
             <ul className='navbar-content'>
                 <li>
-                    <img className='navbar-logo' src={Logo} alt='sportSee logo' />
+                    <a href='/'><img className='navbar-logo' src={Logo} alt='sportSee logo' /></a>
                 </li>
-                <li>Accueil</li>
-                <li>Profil</li>
-                <li>Réglage</li>
-                <li>Communauté</li>
+                <li><a href='#'>Accueil</a></li>
+                <li><a href='#'>Profil</a></li>
+                <li><a href='#'>Réglage</a></li>
+                <li><a href='#'>Communauté</a></li>
             </ul>
         </div>
     )
