@@ -14,7 +14,7 @@ function Error() {
     showNavBar.setShow(false);
 
     return (
-        <div class="error-page">
+        <div className="error-page">
         <h1>ERROR 404 😟</h1>
         <p>Page introuvable</p>
         <p>Cliquez <a href="/">ici</a> pour revenir à la page d'accueil</p>
