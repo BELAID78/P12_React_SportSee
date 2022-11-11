@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { UserCardContext } from '../../pages/Profile';
 import Spinner from '../Spinner/Spinner';
+import UserCardItem from '../UserCardItem/UserCardItem';
 import Calories from './../../assets/images/calories.svg';
 import Carbs from './../../assets/images/carbs.svg';
 import Fat from './../../assets/images/fat.svg';
@@ -12,55 +13,23 @@ import Protein from './../../assets/images/protein.svg';
  * @returns {React.ReactElement}
  */
 function UserCardInformations() {
-    //get the data from the context
+    //get the data from the context 
     const {calorieCount, carbohydrateCount, lipidCount, proteinCount} = useContext(UserCardContext);
-    
+
     //if there is no data render the spinner component
     if(!calorieCount) {
         return <Spinner />
     }
-    
+
     return (
         <>
-            <div className='user-card-infos'>
-                <div>
-                    <img alt='' className='' src={Calories} />
-                </div>
-                <div>
-                    <p>{calorieCount}Kcal</p>
-                    <p>Calories</p>
-                </div>
-            </div>
+            <UserCardItem icon={Calories} value={calorieCount} text="Calories" unit="Kcal" />
 
-            <div className='user-card-infos'>
-                <div>
-                    <img alt='' className='' src={Protein} />
-                </div>
-                <div>
-                    <p>{proteinCount}g</p>
-                    <p>Proteines</p>
-                </div>
-            </div>
-
-            <div className='user-card-infos'>
-                <div>
-                    <img alt='' className='' src={Carbs} />
-                </div>
-                <div>
-                    <p>{carbohydrateCount}g</p>
-                    <p>Glucides</p>
-                </div>
-            </div>
-
-            <div className='user-card-infos'>
-                <div>
-                    <img alt='' className='' src={Fat} />
-                </div>
-                <div>
-                    <p>{lipidCount}g</p>
-                    <p>Lipides</p>
-                </div>
-            </div>
+            <UserCardItem icon={Protein} value={proteinCount} text="Proteines" unit="g" />
+            
+            <UserCardItem icon={Carbs} value={carbohydrateCount} text="Glucides" unit="g" />
+            
+            <UserCardItem icon={Fat} value={lipidCount} text="Lipides" unit="g" />
         </>
     )
 }
@@ -72,7 +41,7 @@ Error.propTypes = {
 
 //no default props for that component
 Error.defaultProps = {
-
+    
 }
 
 //export UserCardInformations component
