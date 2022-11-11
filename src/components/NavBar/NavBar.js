@@ -1,3 +1,4 @@
+import NavBarItem from '../NavBarItem/NavBarItem';
 import Logo from './../../assets/images/logo.svg';
 
 /**
@@ -9,13 +10,15 @@ function NavBar() {
     return (
         <div className="navbar">
             <ul className='navbar-content'>
-                <li>
-                    <a href='/'><img className='navbar-logo' src={Logo} alt='sportSee logo' /></a>
-                </li>
-                <li><a href='#'>Accueil</a></li>
-                <li><a href='#'>Profil</a></li>
-                <li><a href='#'>Réglage</a></li>
-                <li><a href='#'>Communauté</a></li>
+                <NavBarItem link='/' logo={Logo} classname='navbar-logo' alt='sportSee logo' />
+
+                <NavBarItem>Accueil</NavBarItem>
+        
+                <NavBarItem>Profil</NavBarItem>
+        
+                <NavBarItem>Réglage</NavBarItem>
+
+                <NavBarItem>Communauté</NavBarItem>
             </ul>
         </div>
     )
@@ -28,7 +31,7 @@ Error.propTypes = {
 
 //no default props for that component
 Error.defaultProps = {
-
+    
 }
 
 //export Navbar component
