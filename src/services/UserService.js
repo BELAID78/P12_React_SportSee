@@ -1,4 +1,6 @@
 import axios from "axios";
+import { Env } from "../config/env";
+import data from "./../data/user_data";
 
 /**
  * class representing a user fetch infos data
@@ -12,6 +14,9 @@ export default class UserService {
      * @returns {void}
      */
     constructor(userId) {
+        //set user id
+        this.userId = userId;
+
         //user informations end point
         this.endpoint = `http://localhost:3000/user/${userId}`;
 
@@ -25,15 +30,23 @@ export default class UserService {
      * @returns {void}
      */
     async request() {
-        const { data } = await axios({
-			method: 'get',
-			url: this.endpoint,
-			data: {
-				id: this.userId
-			}
-		});
+        //request by using api call
+        if(Env.envirement === 'api') {
+            const { data } = await axios({
+                method: 'get',
+                url: this.endpoint,
+                data: {
+                    id: this.userId
+                }
+            });
+    
+            this.data = data.data;
+        }else{
+            //request data by import it from data file
+            const {foundedData} = await Promise.resolve({ foundedData: data.user_main_data.find(item => item.id === this.userId)});
 
-        this.data = data.data;
+            this.data = foundedData
+        }
     }
 
     /**
