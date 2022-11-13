@@ -54,6 +54,12 @@ Install prop type packages for react props runtime type checking:
 ```
 $ npm install prop-types
 ```
+Change the environment configuration in file p12_react_sport-see\src\config\env.js
+```
+ export const Env = {
+    envirement: 'api'
+}
+```
 
 Launch the app:
 ```
